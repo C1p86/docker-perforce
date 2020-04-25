@@ -1,0 +1,22 @@
+version: "3"
+services:
+  perforce:
+    restart: always
+    image: perforce
+    container_name: perforce
+    environment:
+      - P4SSLDIR=/Perforce/sslkeys
+    ports:
+      - 1666:1666/tcp
+    volumes:
+      - data:/Perforce
+    command: ["/bin/sh", "-ec", "p4d -p ssl::1666 -r /Perforce"]
+
+
+volumes:
+  data:
+    driver_opts:
+      type: nfs
+      o: addr=<NETWORK_SHARED_DRIVE_IP>,rw
+      device: ":<NETWORK_SHARED_DRIVE_FOLDER>"
+
