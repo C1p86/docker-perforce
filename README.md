@@ -1,7 +1,9 @@
 # Docker-Perforce
 Docker image for a p4d server
 ## Build
+```
 docker build -t perforce .
+```
 ## Configure
 - Copy docker-compose.yml.sample to docker-compose.yml and edit this file to match your configuration.
 - If you have not ssl implemented, remove `-p ssl::1666` from the command `p4d -p ssl::1666 -r /Perforce`
